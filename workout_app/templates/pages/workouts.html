@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %} Workouts {% endblock %}
+{% block content %}
+{% if latest_workouts_list %}
+<table class="table table-bordered mt-5 bg-light text-dark">
+  <tbody>
+    <tr>
+      <th class="bg-dark text-light">Name</th>
+      <th class="bg-dark text-light">Exercise</th>
+      <th class="bg-dark text-light">Exercise</th>
+      <th class="bg-dark text-light">Exercise</th>
+      <th class="bg-dark text-light">Exercise</th>
+      <th class="bg-dark text-light">Exercise</th>
+      <th class="bg-dark text-light">Exercise</th>
+      <th class="bg-dark text-light">Exercise</th>
+    </tr>
+    {% for workout in latest_workouts_list %}
+    <tr>
+      <th class="bg-dark text-light"><a href="{% url 'startWorkout' workout.id %}">{{workout.name}}</a></th>
+      {% for exercise in workout.exercise.all %}
+      <td>{{exercise}}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% endblock %}

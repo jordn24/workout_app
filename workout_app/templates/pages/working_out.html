@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Workout App{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'pages/css/styles.css' %}" rel="stylesheet" />
+    <link href="{% static 'pages/css/timer.css' %}" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+    <script src="{% static 'pages/js/timer.js' %}"></script>
+    <script src="{% static 'pages/js/jquery.js' %}"></script>
+    <script src="{% static 'pages/js/crossing_out.js' %}"></script>
+</head>
+
+<body class="bg-secondary container-fluid mt-2">
+    <div class="row mt-2">
+        <div class="col-4 text-center mt-3">
+            <div>
+                <div class="small_timer_style" id="timeOfWorkout">00:00</div>
+            </div>
+        </div>
+        <div class="col-4 text-center">
+            <div class="display-4">{{workout.name}}</div>
+            <div class="text-secondary pt-3 text-light">Press spacebar to pause/continue</div>
+        </div>
+        <div class="col-4 text-center mt-4">
+            <a class="btn-lg btn-danger align-middle" href="{% url 'index'%}">End</a>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-md-4 jumbotron jumbotron-fluid text-center">
+            {% for e in workout.exercise.all %}
+            <h3 class="my-3 ml-4 border border-dark p-1">{{e}}</h3>
+            {% endfor %}
+        </div>
+        <div class="col-md-8 text-center jumbotron jumbotron-fluid">
+            <p id="timer" class="timer_style">5:00</p>
+        </div>
+    </div>
+    <audio id="timer_end"
+        src="{% static 'pages/audio/zapsplat_multimedia_alert_bell_chime_notification_metallic_high_pitched_001_54047.mp3' %}"></audio>
+</body>
+
+</html>

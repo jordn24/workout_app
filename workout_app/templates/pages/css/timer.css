@@ -1,0 +1,14 @@
+.timer_style {
+    font-size: 200px;
+    color: #c00;
+}
+
+.small_timer_style {
+    font-size: 300%;
+    color:black;
+}
+
+.timer_style span {
+    color: blue;
+    font-size: 200px;
+}
